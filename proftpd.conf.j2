@@ -1,0 +1,36 @@
+# ProFTPD configuration file for Docker.
+
+Include /etc/proftpd/conf.d/*.conf
+
+DefaultServer           on
+Group                   ftp
+User                    ftp
+Port                    21
+ServerType              standalone
+UseIPv6                 off
+WtmpLog                 off
+
+AllowOverwrite          {{ ALLOW_OVERWRITE }}
+MaxInstances            {{ MAX_INSTANCES }}
+PassivePorts            4559 4564
+ServerName              "{{ SERVER_NAME }}"
+TimesGMT                {{ TIMES_GMT }}
+Umask                   {{ LOCAL_UMASK }}
+DefaultRoot             {{ LOCAL_ROOT }}
+
+<Limit SITE_CHMOD>
+  DenyAll
+</Limit>
+
+<Limit WRITE>
+  {{ WRITE_ENABLE }}
+</Limit>
+
+<Anonymous ~ftp>
+  RequireValidShell     {{ ANONYMOUS_DISABLE }}
+  UserAlias             anonymous ftp
+  MaxClients            {{ MAX_CLIENTS }}
+  <Limit WRITE>
+    {{ ANON_UPLOAD_ENABLE }}
+  </Limit>
+</Anonymous>
