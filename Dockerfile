@@ -13,7 +13,6 @@ RUN set -x \
 	&& apt-get install -y --no-install-recommends proftpd-mod-crypto proftpd-core openssl less nano\
 	&& apt-get clean  \
 	&& rm -rf /var/lib/{apt,dpkg,cache,log}/ \
-#	&& sed -i "s/# DefaultRoot/DefaultRoot/" /etc/proftpd/proftpd.conf \
 	;
 
 ENV ALLOW_OVERWRITE=on \
