@@ -22,7 +22,7 @@ ENV ALLOW_OVERWRITE=on \
     FTPUSER_NAME=ftpuser \
     LOCAL_ROOT=~ \
     LOCAL_UMASK=022 \
-    MAX_CLIENTS=25 \
+    MAX_CLIENTS=50 \
     MAX_INSTANCES=50 \
     SERVER_NAME=ProFTPD \
     TIMES_GMT=off \
@@ -30,7 +30,7 @@ ENV ALLOW_OVERWRITE=on \
     WRITE_ENABLE=AllowAll
 
 
-EXPOSE 21 4559-4564
+EXPOSE 21 4559-4759
 
 ADD proftpd.conf.j2 /etc/proftpd/proftpd.conf
 ADD entrypoint.sh /usr/local/sbin/entrypoint.sh
